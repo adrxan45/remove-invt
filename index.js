@@ -37,8 +37,8 @@ app.listen(port, () => {
   console.log('\x1b[36m[ SERVER ]\x1b[0m', '\x1b[32m SH : http://localhost:' + port + ' ✅\x1b[0m');
 });
 
-const statusMessages = ["🔗 dsc.gg/dilo"];
-const statusTypes = [ 'dnd'];
+const statusMessages = ["🔗 dsc.gg/dilo", "🌸 https://twitch.tv/dilara_585858"];
+const statusTypes = ['dnd'];
 let currentStatusIndex = 0;
 let currentTypeIndex = 1;
 
@@ -75,7 +75,7 @@ function heartbeat() {
 client.once('ready', () => {
   console.log('\x1b[36m[ INFO ]\x1b[0m', `\x1b[34mPing: ${client.ws.ping} ms \x1b[0m`);
   updateStatus();
-  setInterval(updateStatus, 10000);
+  setInterval(updateStatus, 50000);
   heartbeat();
 });
 
