@@ -54,7 +54,7 @@ async function login() {
   }
 }
 
-function updatePresence() {
+updatePresence() {
   const currentStatus = statusMessages[currentStatusIndex];
   const currentType = statusTypes[currentTypeIndex];
   client.user.setPresence({
@@ -74,9 +74,12 @@ function heartbeat() {
 
 client.once('ready', () => {
   console.log('\x1b[36m[ INFO ]\x1b[0m', `\x1b[34mPing: ${client.ws.ping} ms \x1b[0m`);
-  updateStatus();
-  setInterval(updateStatus, 10000);
-  heartbeat();
+  updatePresence() {
+  const currentStatus = statusMessages[currentStatusIndex];
+  const currentType = statusTypes[currentTypeIndex];
+  client.user.setPresence({
+    activities: [{ name: currentStatus, type: ActivityType.Custom }],
+    status: dnd,
 });
 
 login();
