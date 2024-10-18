@@ -37,7 +37,7 @@ app.listen(port, () => {
   console.log('\x1b[36m[ SERVER ]\x1b[0m', '\x1b[32m SH : http://localhost:' + port + ' ✅\x1b[0m');
 });
 
-const statusMessages = ["🔗 dsc.gg/dilo", "🌸 https://twitch.tv/dilara_585858"];
+const statusMessages = ["🔗 dsc.gg/dilo", "🌸 twitch.tv/dilara_585858"];
 const statusTypes = ['dnd'];
 let currentStatusIndex = 0;
 let currentTypeIndex = 1;
