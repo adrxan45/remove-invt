@@ -40,7 +40,7 @@ app.listen(port, () => {
 const statusMessages = ["🔗 dsc.gg/dilo", "🔗 dsc.gg/dilo"];
 const statusTypes = [ 'dnd', 'idle'];
 let currentStatusIndex = 0;
-let currentTypeIndex = 0;
+let currentTypeIndex = 1;
 
 async function login() {
   try {
@@ -56,7 +56,7 @@ async function login() {
 
 function updateStatus() {
   const currentStatus = statusMessages[currentStatusIndex];
-  const currentType = dnd;
+  const currentType = statusTypes[currentTypeIndex];
   client.user.setPresence({
     activities: [{ name: currentStatus, type: ActivityType.Custom }],
     status: currentType,
