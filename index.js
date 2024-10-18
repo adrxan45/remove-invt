@@ -37,7 +37,7 @@ app.listen(port, () => {
   console.log('\x1b[36m[ SERVER ]\x1b[0m', '\x1b[32m SH : http://localhost:' + port + ' ✅\x1b[0m');
 });
 
-const statusMessages = ["🎧 Listening to Spotify", "🎮 Playing VALORANT"];
+const statusMessages = ["🔗 dsc.gg/dilo", "🔗 dsc.gg/dilo"];
 const statusTypes = [ 'dnd', 'idle'];
 let currentStatusIndex = 0;
 let currentTypeIndex = 0;
@@ -54,12 +54,12 @@ async function login() {
   }
 }
 
-updatePresence() {
+function updateStatus() {
   const currentStatus = statusMessages[currentStatusIndex];
-  const currentType = statusTypes[currentTypeIndex];
+  const currentType = dnd;
   client.user.setPresence({
     activities: [{ name: currentStatus, type: ActivityType.Custom }],
-    status: dnd,
+    status: currentType,
   });
   console.log('\x1b[33m[ STATUS ]\x1b[0m', `Updated status to: ${currentStatus} (${currentType})`);
   currentStatusIndex = (currentStatusIndex + 1) % statusMessages.length;
@@ -74,12 +74,9 @@ function heartbeat() {
 
 client.once('ready', () => {
   console.log('\x1b[36m[ INFO ]\x1b[0m', `\x1b[34mPing: ${client.ws.ping} ms \x1b[0m`);
-  updatePresence() {
-  const currentStatus = statusMessages[currentStatusIndex];
-  const currentType = statusTypes[currentTypeIndex];
-  client.user.setPresence({
-    activities: [{ name: currentStatus, type: ActivityType.Custom }],
-    status: dnd,
+  updateStatus();
+  setInterval(updateStatus, 10000);
+  heartbeat();
 });
 
 login();
